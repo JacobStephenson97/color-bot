@@ -1,7 +1,5 @@
 import { Client, GatewayIntentBits, type ColorResolvable } from "discord.js";
 
-console.log("Hello via Bun!");
-
 const client = new Client({
   intents: [GatewayIntentBits.Guilds, GatewayIntentBits.GuildMessages, GatewayIntentBits.MessageContent, GatewayIntentBits.GuildMembers],
 });
@@ -9,7 +7,7 @@ const client = new Client({
 client.login(process.env.DISCORD_TOKEN);
 
 client.on("ready", () => {
-  console.log("Bot is ready!");
+  console.log("ColorBot is ready!");
 });
 
 client.on("messageCreate", async (message) => {
@@ -47,6 +45,7 @@ client.on("messageCreate", async (message) => {
       return;
     }
     message.member?.roles.add(role);
+    message.channel.send("Your color role has been created!");
   }
 });
 
